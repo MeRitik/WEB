@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration Form</title>
+
+    <style>
+        .registration {
+            width: 40%;
+            margin: auto;
+            border: 2px solid red;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="registration">
+        <h1>Course Registration Form for Development</h1>
+        <form action="courseRegistration" method="post">
+            <label for="user_name">Name</label><br>
+            <input type="text" name="user_name" id="user_name">
+            <br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password">
+            <br>
+
+            <label for="mail">Email</label><br>
+            <input type="email" name="user_mail" id="mail">
+            <br>
+
+            <label for="gender">Gender</label><br>
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="gender" value="Male">
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="female" value="Female">
+
+            <br>
+            <label for="course">Select your Course</label>
+            <select name="course" id="course">
+                <option value="html">HTML</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+                <option value="js">JavaScript</option>
+            </select>
+
+            <br>
+            <label for="agreement">Agree Terms and Conditions</label>
+            <input type="checkbox" name="tnc" id="agreement">
+
+            <br>
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

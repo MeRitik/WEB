@@ -69,15 +69,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[200],
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('ToDo List'),
+        title: const Text('TO DO List'),
         centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         child: const Icon(
           Icons.add,
           color: Colors.white,

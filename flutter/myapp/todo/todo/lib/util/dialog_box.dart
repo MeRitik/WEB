@@ -16,10 +16,10 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.amber.shade100,
+      backgroundColor: Theme.of(context).cardColor,
       content: SizedBox(
-        height: 144,
-        width: 400,
+        height: 128,
+        width: 600,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -34,7 +34,10 @@ class DialogBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 // Save
-                MyButton(text: "Add", onPressed: onSave),
+                MyButton(
+                  text: "Add",
+                  onPressed: onSave,
+                ),
 
                 const SizedBox(
                   width: 8,

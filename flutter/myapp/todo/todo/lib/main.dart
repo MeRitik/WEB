@@ -20,7 +20,11 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
-      theme: ThemeData(primaryColor: Colors.yellow),
+      theme: ThemeData(
+        primaryColor: Color(0xFFFCFFE0),
+        secondaryHeaderColor: Color(0xFF75A47F),
+        cardColor: Color(0xFFBACD92),
+      ),
     );
   }
 }

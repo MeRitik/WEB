@@ -4,7 +4,7 @@ let currentTheme = getTheme();
 
 // init
 changeTheme(currentTheme);
-document.getElementById('theme_change_button').querySelector('span').textContent = (currentTheme == "dark" ? "Dark" : "Light");
+document.getElementById('theme_change_button').querySelector('span').textContent = (currentTheme == "dark" ? "Light" : "Dark");
 
 // TODO:
 function changeTheme() {
@@ -24,7 +24,7 @@ function changeTheme() {
         document.querySelector('html').classList.remove(oldTheme);
         document.querySelector('html').classList.add(currentTheme);
         
-        changeThemeBtn.querySelector('span').textContent = (currentTheme == "dark" ? "Dark" : "Light");
+        changeThemeBtn.querySelector('span').textContent = (currentTheme == "dark" ? "Light" : "Dark");
     });
 }
 

@@ -1,7 +1,7 @@
 package com.ritik.scm.entities;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

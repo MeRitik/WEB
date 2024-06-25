@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ritik.scm.entities.User;
 import com.ritik.scm.forms.UserForm;
 import com.ritik.scm.services.UserService;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class PageController {
@@ -58,7 +58,33 @@ public class PageController {
 
     @PostMapping("/do-register")
     public String postMethodName(@ModelAttribute UserForm userform) {
-        System.out.println(userform);
+        // System.out.println(userform);
+        // Validate the userForm
+        // Save to the database
+
+        /*
+         * User user = User.builder()
+         * .name(userform.getName())
+         * .email(userform.getEmail())
+         * .password(userform.getPassword())
+         * .phoneNumber(userform.getPhoneNumber())
+         * .about(userform.getAbout())
+         * .profilePic(
+         * "https://raw.githubusercontent.com/MeRitik/WEB/main/scm/src/main/resources/static/images/phonebook.png")
+         * .build();
+         */
+
+        User user = new User(); // Builder does not work with default values
+        user.setName(userform.getName());
+        user.setEmail(userform.getEmail());
+        user.setPassword(userform.getPassword());
+        user.setPhoneNumber(userform.getPhoneNumber());
+        user.setAbout(userform.getAbout());
+        user.setProfilePic(
+                "https://raw.githubusercontent.com/MeRitik/WEB/main/scm/src/main/resources/static/images/phonebook.png");
+
+        User savedUser = userService.saveUser(user);
+        System.out.println(savedUser);
         return "redirect:/register";
     }
 

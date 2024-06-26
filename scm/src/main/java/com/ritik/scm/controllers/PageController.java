@@ -11,8 +11,10 @@ import com.ritik.scm.helpers.MessageType;
 import com.ritik.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -61,11 +63,16 @@ public class PageController {
     }
 
     @PostMapping("/do-register")
-    public String postMethodName(@ModelAttribute UserForm userform, HttpSession session) {
+    public String postMethodName(@Valid @ModelAttribute UserForm userform, BindingResult rbindingResult, HttpSession session) {
         // System.out.println(userform);
         // Validate the userForm
-        // Save to the database
+        if(rbindingResult.hasErrors()) {
+            return "register";
+        }
 
+
+
+        // Save to the database
         /*
          * User user = User.builder()
          * .name(userform.getName())

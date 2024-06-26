@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ritik.scm.entities.User;
 import com.ritik.scm.forms.UserForm;
+import com.ritik.scm.helpers.Message;
+import com.ritik.scm.helpers.MessageType;
 import com.ritik.scm.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,7 +61,7 @@ public class PageController {
     }
 
     @PostMapping("/do-register")
-    public String postMethodName(@ModelAttribute UserForm userform) {
+    public String postMethodName(@ModelAttribute UserForm userform, HttpSession session) {
         // System.out.println(userform);
         // Validate the userForm
         // Save to the database
@@ -84,7 +88,12 @@ public class PageController {
                 "https://raw.githubusercontent.com/MeRitik/WEB/main/scm/src/main/resources/static/images/phonebook.png");
 
         User savedUser = userService.saveUser(user);
-        System.out.println(savedUser);
+        // System.out.println(savedUser);
+
+        // add the message
+        Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
+
         return "redirect:/register";
     }
 

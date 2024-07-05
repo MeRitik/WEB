@@ -18,9 +18,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class UserForm {
-    @NotBlank(message = "Username cannot be empty")
-    @Size(min = 3, max = 10, message = "Username should be of 3-10 characters")
-    @Pattern(regexp = "^[A-Za-z][A-Za-z\\s'-]{0,48}[A-Za-z]$", message = "Invalid name")
+    @NotBlank(message = "User name cannot be empty")
     private String name;
 
     @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Invalid Email Address")

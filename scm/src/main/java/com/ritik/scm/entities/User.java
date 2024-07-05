@@ -2,11 +2,9 @@ package com.ritik.scm.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.boot.autoconfigure.task.TaskExecutionProperties.Simple;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,7 +45,7 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     // information
-    private boolean enabled = false;
+    private boolean enabled = true;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 

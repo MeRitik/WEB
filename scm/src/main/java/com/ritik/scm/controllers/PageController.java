@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
@@ -24,10 +25,15 @@ public class PageController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/home")
     public String homePage(Model model) {
         model.addAttribute("name", "ABC Technologies");
-        return "HOME";
+        return "home";
     }
 
     @RequestMapping("/about")
@@ -63,14 +69,13 @@ public class PageController {
     }
 
     @PostMapping("/do-register")
-    public String postMethodName(@Valid @ModelAttribute UserForm userform, BindingResult rbindingResult, HttpSession session) {
+    public String postMethodName(@Valid @ModelAttribute UserForm userform, BindingResult rbindingResult,
+            HttpSession session) {
         // System.out.println(userform);
         // Validate the userForm
-        if(rbindingResult.hasErrors()) {
+        if (rbindingResult.hasErrors()) {
             return "register";
         }
-
-
 
         // Save to the database
         /*

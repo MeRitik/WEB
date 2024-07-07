@@ -42,10 +42,10 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
 
         logger.info(authorizedClientRegistrationID.toString());
 
-        var oAuthUser = (DefaultOAuth2User) authentication.getPrincipal();
-        oAuthUser.getAttributes().forEach((key, value) -> {
-            logger.info("{} => {}", key, value);
-        });
+        var oAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
+        // oAuth2User.getAttributes().forEach((key, value) -> {
+        // logger.info("{} => {}", key, value);
+        // });
 
         User user = new User();
         user.setUserId(UUID.randomUUID().toString());
@@ -58,21 +58,21 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         // Google - Goolge attributes
         if (authorizedClientRegistrationID.equalsIgnoreCase("google")) {
             // google attributes
-            user.setEmail(oAuthUser.getAttribute("email").toString());
-            user.setProfilePic(oAuthUser.getAttribute("picture").toString());
-            user.setName(oAuthUser.getAttribute("name").toString());
-            user.setProviderUserId(oAuthUser.getName().toString());
+            user.setEmail(oAuth2User.getAttribute("email").toString());
+            user.setProfilePic(oAuth2User.getAttribute("picture").toString());
+            user.setName(oAuth2User.getAttribute("name").toString());
+            user.setProviderUserId(oAuth2User.getName().toString());
             user.setProvider(Providers.GOOGLE);
             user.setAbout("This is a Google generated account.");
 
         } else if (authorizedClientRegistrationID.equalsIgnoreCase("github")) {
             // github attributes
-            String email = oAuthUser.getAttribute("email") != null ? oAuthUser.getAttribute("email")
-                    : oAuthUser.getAttribute("login").toString() + "@scm.com";
+            String email = oAuth2User.getAttribute("email") != null ? oAuth2User.getAttribute("email").toString()
+                    : oAuth2User.getAttribute("login").toString() + "@scm.com";
 
-            String picture = oAuthUser.getAttribute("avatar_url").toString();
-            String name = oAuthUser.getAttribute("name").toString();
-            String providerUserId = oAuthUser.getName();
+            String picture = oAuth2User.getAttribute("avatar_url").toString();
+            String name = oAuth2User.getAttribute("name").toString();
+            String providerUserId = oAuth2User.getName();
 
             user.setName(name);
             user.setEmail(email);
